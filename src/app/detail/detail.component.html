@@ -6,18 +6,13 @@
     <div class="content">
       <div class="card">
         <div class="card-body">
-          <!-- <div class="teamName">{{ data.name }} [{{ data.abbreviation }}]</div>
-          <div class="conference">
-            <small>{{ data.conference + "ern conference" }}</small>
-          </div> -->
+       
           <div class="straigthLine"></div>
           <div class="results">Results of past 6 matches</div>
           <div class="data">
             <div *ngFor="let games of lastsix">
-              <span class="abbrv">{{ games.teams.home.name }}</span>
-              <span class="num">{{ games.goals.home}}</span> -
-              <span class="num">{{ games.goals.away}}</span>
-              <span class="abbrv">{{ games.teams.away.name}}</span>
+           
+              
             </div>
           </div>
           <div class="btnContainer">
