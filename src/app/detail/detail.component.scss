@@ -12,7 +12,33 @@
 }
 
 .card {
-  width: 40%;
+  width: 50%;
+}
+.selectedTeams{
+  display:flex;
+  justify-content: space-between;
+  gap:10px;
+}
+img{
+    width:20px;
+    height:20px;
+
+}
+
+.logo{
+    width: 10%;
+}
+
+.name{
+    width: 20%;
+}
+
+.dot{
+    width: 10%;
+}
+
+.goals{
+    width: 10%
 }
 
 .abbrv{

@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class DetailComponent implements OnInit {
   lastsix = this._as.lastsix;
   constructor(private _as: AppService, private _router: Router) {}
-  ngOnInit() {}
+  ngOnInit() {
+  }
   routeToHome() {
     this._router.navigate(['home']);
   }

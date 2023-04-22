@@ -1,8 +1,8 @@
-export interface ITeams {
-  response: IResponse[];
+export interface Teams {
+  response: Response[];
 }
 
-export interface IResponse {
+export interface Response {
   team: {
     code: string;
     id: number;
@@ -12,10 +12,10 @@ export interface IResponse {
   outcome?: string[];
   goals_scored?: number;
   goals_conceded: number;
-  teams: ILastSix[];
+  teams: LastSix[];
 }
 
-export interface ILastSix {
+export interface LastSix {
   goals: {
     home: number;
     away: number;
@@ -25,15 +25,17 @@ export interface ILastSix {
       id: number;
       name: string;
       winner: boolean;
+      logo: string;
     };
     home: {
       id: number;
       name: string;
       winner: boolean;
+      logo:string,
     };
   };
 }
 
-export interface IGetLastSix {
-  response: ILastSix[];
+export interface GetLastSix {
+  response: LastSix[];
 }

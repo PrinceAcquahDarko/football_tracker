@@ -1,18 +1,36 @@
 <main>
   <header>
-    <div>EPL Tracking App</div>
+    <div>Football Score Tracking App</div>
   </header>
   <section class="mainContent">
     <div class="content">
       <div class="card">
         <div class="card-body">
-       
-          <div class="straigthLine"></div>
           <div class="results">Results of past 6 matches</div>
+          <div class="straigthLine"></div>
           <div class="data">
-            <div *ngFor="let games of lastsix">
-           
-              
+            <div class="selectedTeams" *ngFor="let game of lastsix">
+              <div class="logo">
+                <span><img [src]="game.teams.home.logo" alt="homeLogo" /></span>
+              </div>
+              <div class="name">
+                <span>{{ game.teams.home.name }}</span>
+              </div>
+              <div class="goals">
+                <span>{{ game.goals.home }}</span>
+              </div>
+              <div class="dot">
+                <span>-</span>
+              </div>
+              <div class="goals">
+                <span>{{ game.goals.away }}</span>
+              </div>
+              <div class="name">
+                <span>{{ game.teams.away.name }}</span>
+              </div>
+              <div class="logo">
+                <span><img [src]="game.teams.away.logo" alt="awayLogo" /></span>
+              </div>
             </div>
           </div>
           <div class="btnContainer">

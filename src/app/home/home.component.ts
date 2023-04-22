@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app/app.service';
 import { Router } from '@angular/router';
-import { ILastSix, IResponse } from '../app.interface';
+import { LastSix, Response } from '../app.interface';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +12,15 @@ export class HomeComponent implements OnInit {
   team = {
     id: '',
   };
-  teams: IResponse[] = [];
-  selectedTeams: IResponse[] = [];
+  teams: Response[] = [];
+  selectedTeams: Response[] = [];
 
   constructor(private _as: AppService, private _router: Router) {}
 
   ngOnInit() {
     this._as.getTeams().subscribe(
       (res) => {
-        console.log(res);
         this.teams = res.response;
-        console.log(this.teams, 'fromt his.teams');
       },
       (err) => {
         console.log(err);
@@ -34,7 +32,6 @@ export class HomeComponent implements OnInit {
     let searched_team = this.teams.filter(
       (x) => x.team.id === +this.team.id
     )[0];
-    console.log(searched_team, 'from searched_team again');
     let if_team = this.selectedTeams.filter(
       (x: { team: { id: number } }) => x.team.id === +this.team.id
     )[0];
@@ -45,8 +42,7 @@ export class HomeComponent implements OnInit {
       this._as.getLastSix(searched_team.team.id).subscribe(
         (res) => {
           let data = res.response;
-          console.log(data, 'fromd ata');
-          data.forEach((team: ILastSix) => {
+          data.forEach((team: LastSix) => {
             if (team.teams.away.id === +searched_team.team.id) {
               if (team.teams.away.winner === true) {
                 searched_team.outcome?.push('W');
@@ -85,7 +81,6 @@ export class HomeComponent implements OnInit {
             (searched_team.goals_conceded / 6).toFixed(1)
           );
           this.selectedTeams.push(searched_team);
-          console.log(searched_team, 'from factorized');
         },
         (err) => console.log(err)
       );
@@ -97,8 +92,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  results(code: string, i: ILastSix[]) {
-    console.log(i, 'from i');
+  results(code: string, i: LastSix[]) {
     this._as.lastsix = i;
     this._router.navigate(['results', code]);
   }
