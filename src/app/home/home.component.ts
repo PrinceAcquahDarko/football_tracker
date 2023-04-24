@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     id: '',
   };
   teams: Response[] = [];
-  selectedTeams: Response[] = [];
+  selectedTeams = this._as.selectedTeams;
 
   constructor(private _as: AppService, private _router: Router) {}
 
@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
           searched_team.goals_conceded = parseFloat(
             (searched_team.goals_conceded / 6).toFixed(1)
           );
-          this.selectedTeams.push(searched_team);
+          this._as.selectedTeams.push(searched_team);
         },
         (err) => console.log(err)
       );
@@ -97,5 +97,3 @@ export class HomeComponent implements OnInit {
     this._router.navigate(['results', code]);
   }
 }
-
-

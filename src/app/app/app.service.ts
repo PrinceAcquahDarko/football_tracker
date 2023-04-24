@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { GetLastSix, LastSix, Teams } from '../app.interface';
+import { GetLastSix, LastSix, Teams,Response } from '../app.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,8 @@ import { GetLastSix, LastSix, Teams } from '../app.interface';
 export class AppService {
   url = 'https://v3.football.api-sports.io/teams?league=39&season=2022';
   lastsix: LastSix[] = []
+  selectedTeams: Response[] = [];
+
   constructor(private http: HttpClient) {}
 
   getTeams(): Observable<Teams> {
